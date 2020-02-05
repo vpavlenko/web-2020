@@ -1,1 +1,12 @@
-# web-2020
+Design choices:
+- backend framework: Django? Express.js?
+- frontend framework: React? Vue?
+- bundler config: Webpack? Parcel?
+- frontend deployment: Netlify? Now?
+- backend deployment: Amazon? Heroku?
+- database: Postgres? (ok, at least here there's no alternative)
+- authentication: Cognito? Auth0? python-social-auth?
+- CSS-in-JS library: anything competing with styled-components?
+- components library: Bootstrap? Material UI? Ant?
+- linters and formatters: ESLint/Prettier and Black, lucky we
+- frontend state management: Redux? Storeon? React Hooks?
