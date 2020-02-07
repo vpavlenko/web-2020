@@ -1,4 +1,3 @@
-
 backend framework
 ---
 Django? Express.js?
@@ -42,6 +41,8 @@ authentication
 ---
 Cognito? Auth0? python-social-auth?
 
+Looks like Passport.js is huge and popular.
+
 CSS-in-JS library
 ---
 anything competing with styled-components?
@@ -65,3 +66,6 @@ Redux? Storeon? React Hooks?
 Code editor as a component
 ---
 **Monaco**: https://habr.com/ru/company/Voximplant/blog/445390/
+
+Monaco is compatible with pre-eject CRA: https://github.com/react-monaco-editor/react-monaco-editor/issues/263
+See [cra-monaco/](cra-monaco)
