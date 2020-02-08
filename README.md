@@ -1,21 +1,48 @@
-backend framework
+Backend framework [Django]
 ---
 Django? Express.js?
-(Alternatives - async Flask equivalen is FastAPI)
+(Alternatives - async Flask equivalent is FastAPI)
 
-Again, I love admin, Django ORM, dbshell, Jupyter dbshell.
+Again, I love admin panel, Django ORM, migrations, dbshell, Jupyter dbshell. So Django.
 
-frontend framework
+Frontend framework [React]
 ---
 React? Vue?
 
 Why switching from React if Vue has similar metrics and less ecosystem. For instance, no mainstream Monaco wrapper.
 
-language flavor/safety
+Language flavor/safety [TypeScript, Mypy]
 ---
-flow? custom babel preset?
+flow? custom babel preset? typescript? typed Python?
 
-bundler config and boilerplate
+https://blogs.dropbox.com/tech/2019/09/our-journey-to-type-checking-4-million-lines-of-python/
+
+Mypy is worth a try - the code should be clearer.
+
+Once I start doing Mypy - follow this guide: https://realpython.com/python-type-checking/
+
+Looks like Flow is on par with TypeScript and it's better with React - both are maintained by Facebook.
+
+May migrate from Flow to TypeScript later on: https://medium.com/inato/migrating-from-flow-to-typescript-why-how-worth-it-5b7703d12089
+
+Flow is often blamed to have bad VSCode support and random bugs.
+
+API design [DRF]
+---
+REST? GraphQL?
+
+Looks like it's easy to plug in graphene_django at any time. Benefits: typed API requests, no overfetching/underfetching. Worth a try once we get to writing actual API queries.
+
+What about DRF instead? DRF has 30 times more projects using it.
+
+To read: https://github.com/Shopify/graphql-design-tutorial/blob/master/TUTORIAL.md
+https://www.howtographql.com/
+
+GraphQL seems to be cool, Graphene probably sucks: https://news.ycombinator.com/item?id=20200203
+
+https://www.valentinog.com/blog/drf/
+
+Bundler config and boilerplate [Create React App]
 ---
 Webpack? Parcel? Create React App? Next.js? Gatsby?
 
@@ -25,47 +52,51 @@ If project can't benefit from server-side rendering or SEO or static generation,
 
 Parcel may be good, but I don't know if it's easy to wire Parcel and Monaco, as well as any other dependencies. Sticking with CRA.
 
-frontend deployment
+Frontend deployment
 ---
 Netlify? Now?
 
-backend deployment
+Backend deployment
 ---
 Amazon? Heroku? docker? RDS?
 
-database
+Database
 ---
 Postgres? (ok, at least here there's no alternative)
 
-authentication
+Authentication
 ---
 Cognito? Auth0? python-social-auth?
 
 Looks like Passport.js is huge and popular.
 
-CSS-in-JS library
----
-anything competing with styled-components?
+Can do plain django.contrib.auth with native pages (i.e. no React wrappers around, just redirects) - for prototyping
 
-components library
+CSS-in-JS library [styled-components]
+---
+Anything competing with styled-components? CSS Modules?
+
+Components library [Ant]
 ---
 Bootstrap? Material UI? Ant?
 
-linters and formatters
+https://ant.design/docs/react/use-in-typescript
+
+Linters and formatters [Prettier, Black, Husky]
 ---
 
 ESLint/Prettier and Black, lucky we
 
 pre-commit Black hook with Husky
 
-frontend state management
+Frontend state management
 ---
 
 Redux? Storeon? React Hooks?
 
-Code editor as a component
+Code editor as a component [Monaco]
 ---
-**Monaco**: https://habr.com/ru/company/Voximplant/blog/445390/
+https://habr.com/ru/company/Voximplant/blog/445390/
 
 Monaco is compatible with pre-eject CRA: https://github.com/react-monaco-editor/react-monaco-editor/issues/263
 See [cra-monaco/](cra-monaco)
