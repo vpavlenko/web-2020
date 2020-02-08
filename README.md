@@ -13,7 +13,7 @@ Why switching from React if Vue has similar metrics and less ecosystem. For inst
 
 Language flavor/safety [TypeScript, Mypy]
 ---
-flow? custom babel preset? typescript? typed Python?
+Flow? Typescript? Typed Python?
 
 https://blogs.dropbox.com/tech/2019/09/our-journey-to-type-checking-4-million-lines-of-python/
 
@@ -26,6 +26,20 @@ Looks like Flow is on par with TypeScript and it's better with React - both are 
 May migrate from Flow to TypeScript later on: https://medium.com/inato/migrating-from-flow-to-typescript-why-how-worth-it-5b7703d12089
 
 Flow is often blamed to have bad VSCode support and random bugs.
+
+Yarn and Jest migrated from Flow to TypeScript. Same for React Native's Expo.
+
+https://medium.com/palantir/tslint-in-2019-1a144c2317a9
+
+Linters and formatters [Prettier, Black, Husky]
+---
+
+ESLint/Prettier and Black, lucky we
+
+pre-commit Black hook with Husky
+
+TSLint?
+
 
 API design [DRF]
 ---
@@ -42,6 +56,20 @@ GraphQL seems to be cool, Graphene probably sucks: https://news.ycombinator.com/
 
 https://www.valentinog.com/blog/drf/
 
+Database [Postgres]
+---
+Postgres? (ok, at least here there's no alternative)
+
+Authentication [Django_allauth, django-rest-auth]
+---
+Cognito? Auth0? python-social-auth?
+
+Looks like Passport.js is huge and popular.
+
+Can do plain django.contrib.auth with native pages (i.e. no React wrappers around, just redirects) - for prototyping
+
+Django_allauth and django-rest-auth. The latter isn't supported anymore, but it's required to wire with DRF.
+
 Bundler config and boilerplate [Create React App]
 ---
 Webpack? Parcel? Create React App? Next.js? Gatsby?
@@ -54,23 +82,14 @@ Parcel may be good, but I don't know if it's easy to wire Parcel and Monaco, as 
 
 Frontend deployment
 ---
-Netlify? Now?
+Netlify? Now? Github Pages?
 
 Backend deployment
 ---
 Amazon? Heroku? docker? RDS?
 
-Database
----
-Postgres? (ok, at least here there's no alternative)
 
-Authentication
----
-Cognito? Auth0? python-social-auth?
 
-Looks like Passport.js is huge and popular.
-
-Can do plain django.contrib.auth with native pages (i.e. no React wrappers around, just redirects) - for prototyping
 
 CSS-in-JS library [styled-components]
 ---
@@ -82,17 +101,14 @@ Bootstrap? Material UI? Ant?
 
 https://ant.design/docs/react/use-in-typescript
 
-Linters and formatters [Prettier, Black, Husky]
----
+Ant has better TypeScript support and is being very actively developed
 
-ESLint/Prettier and Black, lucky we
-
-pre-commit Black hook with Husky
-
-Frontend state management
+Frontend state management [Storeon + React Hooks]
 ---
 
 Redux? Storeon? React Hooks?
+
+Will replace Storeon with Redux once Storeon isn't good enough.
 
 Code editor as a component [Monaco]
 ---
