@@ -5,7 +5,18 @@ Django? Express.js?
 
 Again, I love admin panel, Django ORM, migrations, dbshell, Jupyter dbshell. So Django.
 
-Django boilerplate - cookiecutter? https://github.com/pydanny/cookiecutter-django https://github.com/agconti/cookiecutter-django-rest
+Django boilerplate - cookiecutter?
+- https://github.com/pydanny/cookiecutter-django
+- https://github.com/agconti/cookiecutter-django-rest
+- https://github.com/wsvincent/awesome-django#boilerplate
+
+What to look at:
+- https://django-extensions.readthedocs.io/
+- https://github.com/jazzband/django-debug-toolbar/
+- https://github.com/arteria/django-hijack
+- https://github.com/wsvincent/awesome-django#models
+- https://github.com/joke2k/django-environ
+- https://github.com/zulip/zulip/
 
 
 
@@ -47,7 +58,7 @@ ESLint/Prettier with typescript-eslint. Also Black. Pre-commit hooks with Husky.
 
 
 
-API design [DRF]
+API design [Django REST Framework]
 ---
 REST? GraphQL?
 
@@ -60,7 +71,8 @@ https://www.howtographql.com/
 
 GraphQL seems to be cool, Graphene probably sucks: https://news.ycombinator.com/item?id=20200203
 
-https://www.valentinog.com/blog/drf/
+- https://www.valentinog.com/blog/drf/
+- https://github.com/wsvincent/awesome-django#django-rest-framework
 
 
 
@@ -68,7 +80,7 @@ Database [Postgres]
 ---
 Postgres? (ok, at least here there's no alternative)
 
-Reasoning: I want an RDBMS bc why disentangle denormalized Mongo crap if you only have one life? Postgres is top-1 RDBMS.
+Reasoning: I want an RDBMS because why disentangle denormalized Mongo crap if you only have one life? Postgres is top-1 RDBMS.
 
 
 
@@ -90,7 +102,7 @@ Bundler config and boilerplate [Create React App]
 ---
 Webpack? Parcel? Create React App? Next.js? Gatsby?
 
-**Nano React App**: https://hackernoon.com/create-react-app-is-way-too-bloated-5db07c3511
+Nano React App: https://hackernoon.com/create-react-app-is-way-too-bloated-5db07c3511
 
 If project can't benefit from server-side rendering or SEO or static generation, then it's not worth going the Next.js or Gatsby way - less popular meaning less support, more traps. Sticking with CRA / ejected CRA.
 
