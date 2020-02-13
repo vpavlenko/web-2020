@@ -26,6 +26,9 @@ React? Vue?
 
 Why switching from React if Vue has similar metrics and less ecosystem. For instance, no mainstream Monaco wrapper. Also, React Native is fun.
 
+What to look at:
+- https://github.com/welldone-software/why-did-you-render
+
 
 
 Language flavor/safety [TypeScript, Mypy]
@@ -55,6 +58,9 @@ Linters and formatters [Prettier, Black, Husky]
 ---
 
 ESLint/Prettier with typescript-eslint. Also Black. Pre-commit hooks with Husky.
+
+Important:
+- https://prettier.io/docs/en/integrating-with-linters.html
 
 
 
@@ -107,6 +113,8 @@ Nano React App: https://hackernoon.com/create-react-app-is-way-too-bloated-5db07
 If project can't benefit from server-side rendering or SEO or static generation, then it's not worth going the Next.js or Gatsby way - less popular meaning less support, more traps. Sticking with CRA / ejected CRA.
 
 Parcel may be good, but I don't know if it's easy to wire Parcel and Monaco, as well as any other dependencies. Sticking with CRA.
+
+Note: Yarn 2 can fail to work with react-app-rewired, so sticking to a Yarn 1.* like 1.22 is a safe option for now.
 
 
 
@@ -166,7 +174,8 @@ Router [Reach Router]
 
 Let's start with @reach/router and see how cool React Router v6 is once it's out.
 
-https://reacttraining.com/blog/reach-react-router-future/
+- https://reacttraining.com/blog/reach-react-router-future/
+- https://github.com/reach/router/blob/master/website/src/markdown/pages/typescript.md
 
 
 
