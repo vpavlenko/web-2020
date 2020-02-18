@@ -18,6 +18,8 @@ What to look at:
 - https://github.com/joke2k/django-environ
 - https://github.com/zulip/zulip/
 
+Alternatively, you can assmeble a stack around Express.js. Although I recommend go the RDBMS way, which leads to using sequelize as an ORM. And sequelize itself isn't as smooth as Django ORM - it requires more manual actions and verbose configuration. It was also hard to interact with using REPL due to async nature - maybe it's still hard.
+
 
 
 Frontend framework [React]
@@ -61,6 +63,21 @@ ESLint/Prettier with typescript-eslint. Also Black. Pre-commit hooks with Husky.
 
 Important:
 - https://prettier.io/docs/en/integrating-with-linters.html
+- https://github.com/alexgorbatchev/eslint-import-resolver-typescript
+- https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+
+
+
+Package managers [Yarn 1.22, Pipenv]
+---
+Yarn 2 can fail to work with react-app-rewired, so sticking to a Yarn 1.* like 1.22 is a safe option for now.s
+
+Pipenv is a modern replacement for pip/virtualenv, although it itself isn't being actively supported since Oct 2018.
+
+It looks like npm is also being actively developed and is on par with Yarn these days.
+
+- https://gioele.io/pyenv-pipenv
+- https://xkcd.com/1987/
 
 
 
@@ -113,8 +130,6 @@ Nano React App: https://hackernoon.com/create-react-app-is-way-too-bloated-5db07
 If project can't benefit from server-side rendering or SEO or static generation, then it's not worth going the Next.js or Gatsby way - less popular meaning less support, more traps. Sticking with CRA / ejected CRA.
 
 Parcel may be good, but I don't know if it's easy to wire Parcel and Monaco, as well as any other dependencies. Sticking with CRA.
-
-Note: Yarn 2 can fail to work with react-app-rewired, so sticking to a Yarn 1.* like 1.22 is a safe option for now.
 
 
 
