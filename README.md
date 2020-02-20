@@ -68,16 +68,17 @@ Important:
 
 
 
-Package managers [Yarn 1.22, Pipenv]
+Package managers [Yarn 1.22 or npm, npx, Pipenv]
 ---
 Yarn 2 can fail to work with react-app-rewired, so sticking to a Yarn 1.* like 1.22 is a safe option for now.s
 
 Pipenv is a modern replacement for pip/virtualenv, although it itself isn't being actively supported since Oct 2018.
 
-It looks like npm is also being actively developed and is on par with Yarn these days.
+It looks like npm is being actively developed and is on par with Yarn these days, whereas Yarn has almost no big changes throughout 2019.
 
 - https://gioele.io/pyenv-pipenv
 - https://xkcd.com/1987/
+- https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
 
 
 
@@ -223,3 +224,9 @@ https://www.digitalocean.com/products/managed-databases/
 
 Kubernetes / Docker Swarm is probably overkill because one instance with Docker Compose should be enough.
 
+
+
+Mobile development
+---
+
+React Native, Code Push, Fastlane
