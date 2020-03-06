@@ -56,7 +56,8 @@ Have a look at:
 
 
 
-Linters and formatters [Prettier, Black, Husky]
+
+Linters and formatters [Prettier, Black, flake8/pylint?, Husky]
 ---
 
 ESLint/Prettier with typescript-eslint. Also Black. Pre-commit hooks with Husky.
@@ -65,6 +66,7 @@ Important:
 - https://prettier.io/docs/en/integrating-with-linters.html
 - https://github.com/alexgorbatchev/eslint-import-resolver-typescript
 - https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+- https://github.com/vintasoftware/python-linters-and-code-analysis
 
 
 
