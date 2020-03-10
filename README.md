@@ -49,6 +49,8 @@ No need to use TSLint anymore: https://medium.com/palantir/tslint-in-2019-1a144c
 
 Looks like CRA doesn't have ES2016 support, let alone ES2020. What exactly are we missing: https://github.com/tc39/proposals/blob/master/finished-proposals.md It might make sense to enable it using customize-cra: https://2muchcoffee.com/blog/es7-decorators-how-to-use-the-decorator-syntax-in-react/
 
+Looks like Pyright (Microsoft) and Pyre (Facebook) are both maintained tools that do Mypy-like type checking, but faster.
+
 Have a look at:
 - Tons of learning resources: https://github.com/dzharii/awesome-typescript
 - https://github.com/typescript-cheatsheets/react-typescript-cheatsheet
@@ -66,7 +68,10 @@ Important:
 - https://prettier.io/docs/en/integrating-with-linters.html
 - https://github.com/alexgorbatchev/eslint-import-resolver-typescript
 - https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
-- https://github.com/vintasoftware/python-linters-and-code-analysis
+- https://github.com/vintasoftware/python-linters-and-code-analysis (also watch out for Django-specific linters)
+- https://github.com/vinta/awesome-python#code-analysis
+- https://wemake-python-stylegui.de/en/latest/pages/usage/integrations/auto-formatters.html
+- http://www.locallyoptimal.com/blog/2019/08/23/why-you-should-use-black-for-your-python-style-linting/
 
 
 
