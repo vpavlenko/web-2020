@@ -20,6 +20,11 @@ What to look at:
 
 Alternatively, you can assmeble a stack around Express.js. Although I recommend go the RDBMS way, which leads to using sequelize as an ORM. And sequelize itself isn't as smooth as Django ORM - it requires more manual actions and verbose configuration. It was also hard to interact with using REPL due to async nature - maybe it's still hard.
 
+- https://vsupalov.com/django/
+- https://vsupalov.com/quick-django-refresher-crash-course/
+- https://vsupalov.com/django-custom-user-model/
+- https://medium.com/3yourmind/keeping-django-database-migrations-backward-compatible-727820260dbb
+
 
 
 Frontend framework [React]
@@ -41,6 +46,8 @@ https://blogs.dropbox.com/tech/2019/09/our-journey-to-type-checking-4-million-li
 
 Mypy is worth a try - the code should be clearer. Once I start doing Mypy - follow this guide: https://realpython.com/python-type-checking/
 
+Django-stubs is Django with types: https://sobolevn.me/2019/08/typechecking-django-and-drf
+
 Looks like Flow is on par with TypeScript and it's better with React - both are maintained by Facebook. One may also migrate from Flow to TypeScript later on: https://medium.com/inato/migrating-from-flow-to-typescript-why-how-worth-it-5b7703d12089
 
 Flow is often blamed to have bad VSCode support and random bugs. Yarn and Jest migrated from Flow to TypeScript. Same for React Native's Expo.
@@ -58,7 +65,6 @@ Have a look at:
 
 
 
-
 Linters and formatters [Prettier, Black, flake8/pylint?, Husky]
 ---
 
@@ -72,6 +78,15 @@ Important:
 - https://github.com/vinta/awesome-python#code-analysis
 - https://wemake-python-stylegui.de/en/latest/pages/usage/integrations/auto-formatters.html
 - http://www.locallyoptimal.com/blog/2019/08/23/why-you-should-use-black-for-your-python-style-linting/
+
+What's suspicious about https://github.com/wemake-services/wemake-django-template ?
+- poetry isn't as mature as pipenv - eg. [pipenv is working in VSCode with zero configuration](https://code.visualstudio.com/docs/python/environments)
+- same for Caddy vs. nginx - it's not worth risking with this layer of infrastructure
+- Gitlab CI - not a default Github CI
+- wemake-python-styleguide is against black, and I love auto-formatters
+
+It's hard to find a proper setup for Python where black works together nicely with a reasonable amount
+of linters. Also, it should be integratable into your IDE (which is VSCode probably).
 
 
 
@@ -210,7 +225,7 @@ Try Zeit Now and Netlify, in this order.
 
 
 
-Backend deployment [DigitalOcean Docker + Managed Postgres]
+Backend deployment [DigitalOcean Docker (+Portainer) + Managed Postgres + CloudFlare]
 ---
 Amazon/GCP/Azure? Heroku? VPS/Docker/Lambda? RDS?
 
@@ -226,10 +241,27 @@ Let's try Docker.
 
 uWSGI / gunicorn - both aren't well supported, but gunicorn had more patches over the last years.
 
-https://www.digitalocean.com/products/managed-databases/
-[Loss in latency (100ms)](https://levelup.gitconnected.com/performance-aws-rds-postgres-vs-digital-ocean-postgres-8c2500197f1c), better documentation
+DigitalOcean has its own RDS competitor: https://www.digitalocean.com/products/managed-databases/
+[Loss in latency (100ms)](https://levelup.gitconnected.com/performance-aws-rds-postgres-vs-digital-ocean-postgres-8c2500197f1c), better documentation. (DigitalOcean also has its own S3)
 
-Kubernetes / Docker Swarm is probably overkill because one instance with Docker Compose should be enough.
+Kubernetes / Docker Swarm is probably an overkill because one instance with Docker Compose should be enough.
+
+So, DigitalOcean, Django app living in a docker, ability to add a load balancer and more dockers, 
+and a Managed Database (Postgres) with backups.
+
+[Horizontal scaling for the Django part is better than vertical](https://coderbook.com/@marcus/how-scalable-are-websites-built-in-django-framework/)
+
+Why doesn't googling "django pgbouncer" yield a lot of results? https://stackoverflow.com/questions/40248970/django-settings-when-using-pgbouncer
+
+CloudFlare from the start: for hiding the real server API, maybe caching something, DNS configuration, protecting from malicious 
+DDoS (they happen even at a small scale!).
+
+Monitoring: Sentry, Datadog?
+
+- https://vsupalov.com/same-docker-container-django-postgresql/ and all other articles on vsupalov.com
+- https://vsupalov.com/tools/portainer/
+- https://vsupalov.com/speed-up-python-docker-image-build/
+- https://vsupalov.com/deploying-like-a-startup/
 
 
 
