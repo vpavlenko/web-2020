@@ -16,7 +16,13 @@ What to look at:
 - https://github.com/arteria/django-hijack
 - https://github.com/wsvincent/awesome-django#models
 - https://github.com/joke2k/django-environ
+
+Open-source Django projects:
 - https://github.com/zulip/zulip/
+- https://github.com/taigaio/taiga-back
+- https://github.com/wagtail/wagtail/
+- https://github.com/edx/edx-platform
+- https://github.com/django/djangoproject.com
 
 Alternatively, you can assmeble a stack around Express.js. Although I recommend go the RDBMS way, which leads to using sequelize as an ORM. And sequelize itself isn't as smooth as Django ORM - it requires more manual actions and verbose configuration. It was also hard to interact with using REPL due to async nature - maybe it's still hard.
 
@@ -65,19 +71,29 @@ Have a look at:
 
 
 
-Linters and formatters [Prettier, Black, flake8/pylint?, Husky]
+Linters and formatters [Prettier, Black, flake8, isort, Husky, ShellCheck for .sh, hadolint for Dockerfile]
 ---
 
-ESLint/Prettier with typescript-eslint. Also Black. Pre-commit hooks with Husky.
+ESLint/Prettier with typescript-eslint. Also Black. Pre-commit hooks running necessary tools with Husky.
 
-Important:
+JS stuff:
 - https://prettier.io/docs/en/integrating-with-linters.html
 - https://github.com/alexgorbatchev/eslint-import-resolver-typescript
 - https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+
+Python stuff:
 - https://github.com/vintasoftware/python-linters-and-code-analysis (also watch out for Django-specific linters)
+- https://github.com/DmytroLitvinov/awesome-flake8-extensions
 - https://github.com/vinta/awesome-python#code-analysis
 - https://wemake-python-stylegui.de/en/latest/pages/usage/integrations/auto-formatters.html
 - http://www.locallyoptimal.com/blog/2019/08/23/why-you-should-use-black-for-your-python-style-linting/
+- https://github.com/psf/black/issues/333#issuecomment-516088368
+- https://dmerej.info/blog/post/bye-bye-pylint/
+- https://github.com/pilat/vscode-importmagic
+
+Other stuff:
+- https://github.com/koalaman/shellcheck
+- https://github.com/hadolint/hadolint
 
 What's suspicious about https://github.com/wemake-services/wemake-django-template ?
 - poetry isn't as mature as pipenv - eg. [pipenv is working in VSCode with zero configuration](https://code.visualstudio.com/docs/python/environments)
@@ -85,8 +101,7 @@ What's suspicious about https://github.com/wemake-services/wemake-django-templat
 - Gitlab CI - not a default Github CI
 - wemake-python-styleguide is against black, and I love auto-formatters
 
-It's hard to find a proper setup for Python where black works together nicely with a reasonable amount
-of linters. Also, it should be integratable into your IDE (which is VSCode probably).
+A sample project with Black, flake8, mypy and isort are configured to work together and with Django/DRF: https://github.com/vpavlenko/drf-tutorial
 
 
 
