@@ -1,3 +1,7 @@
+Below are my thoughts on how I would pick a stack for a web development in 2020. I value mature technologies, size of the community, "batteries included" and speed of the development.
+
+I personally use VSCode editor, again because it's very popular these days which leads to lots of problems being solved in form of questions asked, plugins shipped and bugs fixed. One decent alternative is PyCharm/WebStorm.
+
 - [Frontend](#frontend)
   - [Frontend framework [React with Hooks]](#frontend-framework-react-with-hooks)
   - [Bundler config and boilerplate [Create React App]](#bundler-config-and-boilerplate-create-react-app)
@@ -6,19 +10,23 @@
   - [Frontend state management [React Hooks -> Redux + Redux Toolkit + Redux Thunk (+ Redux Saga)]](#frontend-state-management-react-hooks---redux--redux-toolkit--redux-thunk--redux-saga)
   - [Router [React Router]](#router-react-router)
   - [Code editor as a component [Monaco]](#code-editor-as-a-component-monaco)
+  - [Mobile development [React Native]](#mobile-development-react-native)
+  - [Language flavor/safety [TypeScript]](#language-flavorsafety-typescript)
+  - [Package managers [Yarn 1.22 or npm, npx]](#package-managers-yarn-122-or-npm-npx)
+  - [Linters and formatters [ESLint/Prettier, Husky]](#linters-and-formatters-eslintprettier-husky)
 - [Backend](#backend)
   - [Backend framework [Django]](#backend-framework-django)
   - [API design [Django REST Framework]](#api-design-django-rest-framework)
   - [Authentication [django-allauth, django-rest-auth]](#authentication-django-allauth-django-rest-auth)
-- [Language infrastructure](#language-infrastructure)
-  - [Language flavor/safety [TypeScript, Mypy]](#language-flavorsafety-typescript-mypy)
-  - [Package managers [Yarn 1.22 or npm, npx, Pipenv]](#package-managers-yarn-122-or-npm-npx-pipenv)
-  - [Linters and formatters [Prettier, Black, flake8, isort, Husky, ShellCheck for .sh, hadolint for Dockerfile]](#linters-and-formatters-prettier-black-flake8-isort-husky-shellcheck-for-sh-hadolint-for-dockerfile)
-- [Deployment](#deployment)
+  - [Language flavor/safety [Mypy]](#language-flavorsafety-mypy)
+  - [Package managers [Pipenv]](#package-managers-pipenv)
+  - [Linters and formatters [Black, flake8, isort]](#linters-and-formatters-black-flake8-isort)
+- [DevOps](#devops)
   - [Frontend deployment [Zeit Now]](#frontend-deployment-zeit-now)
   - [Database [Postgres]](#database-postgres)
   - [Backend deployment [DigitalOcean Docker (+Portainer) + Managed Postgres + CloudFlare]](#backend-deployment-digitalocean-docker-portainer--managed-postgres--cloudflare)
-  - [Mobile development [React Native]](#mobile-development-react-native)
+  - [Linters and formatters [ShellCheck for .sh, hadolint for Dockerfile]](#linters-and-formatters-shellcheck-for-sh-hadolint-for-dockerfile)
+  - [Bonus track: Zsh tools](#bonus-track-zsh-tools)
 
 
 Frontend
@@ -120,22 +128,91 @@ See [cra-monaco/](cra-monaco). Although this isn't maintained: https://medium.co
 
 
 
+Mobile development [React Native]
+---
+
+React Native, Code Push, Fastlane.
+
+Flutter is good but you already have React, so why make your stack more complex.
+
+Unless you build games or rely on bleeding edge APIs like VR/AR, you don't need native Swift/Kotlin development. It's more technologies => more engineering effort and cost, in terms of hours and team size and team salary and communication.
+
+
+
+Language flavor/safety [TypeScript]
+---
+Flow or Typescript?
+
+Looks like Flow is on par with TypeScript and it's better with React - both are maintained by Facebook. One may also migrate from Flow to TypeScript later on: https://medium.com/inato/migrating-from-flow-to-typescript-why-how-worth-it-5b7703d12089
+
+Flow is often blamed to have bad VSCode support and random bugs. Yarn and Jest migrated from Flow to TypeScript. Same for React Native's Expo.
+
+No need to use TSLint anymore: https://medium.com/palantir/tslint-in-2019-1a144c2317a9
+
+Looks like CRA doesn't have ES2016 support, let alone ES2020. What exactly are we missing: https://github.com/tc39/proposals/blob/master/finished-proposals.md It might make sense to enable it using customize-cra: https://2muchcoffee.com/blog/es7-decorators-how-to-use-the-decorator-syntax-in-react/
+
+Have a look at:
+- https://github.com/dzharii/awesome-typescript
+- https://github.com/typescript-cheatsheets/react-typescript-cheatsheet
+- https://github.com/jeffijoe/typesync
+- https://mariusschulz.com/blog/series/typescript-evolution
+
+
+
+Package managers [Yarn 1.22 or npm, npx]
+---
+Yarn 2 can fail to work with react-app-rewired, so sticking to a Yarn 1.* like 1.22 is a safe option for now.s
+
+It looks like npm is being actively developed and is on par with Yarn these days, whereas Yarn has almost no big changes throughout 2019.
+
+- https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
+
+
+
+Linters and formatters [ESLint/Prettier, Husky]
+---
+
+ESLint/Prettier with typescript-eslint. Pre-commit hooks running necessary tools with Husky.
+- https://prettier.io/docs/en/integrating-with-linters.html
+- https://github.com/alexgorbatchev/eslint-import-resolver-typescript
+- https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+- https://dev.to/botreetechnologies/setting-up-husky-pre-commit-hook-with-eslint-prettier-and-lint-staged-for-react-and-react-native-d05
+
+
+
 Backend
 ===
 
 Backend framework [Django]
 ---
-Django? Express.js?
-(Alternatives - async Flask equivalent is FastAPI)
 
-Again, I love admin panel, Django ORM, migrations, dbshell, Jupyter dbshell. So Django.
+Django or Express.js?
+
+First of all, there are tons of web frameworks, and all popular languages have several of them.
+The most popular ones are all pretty much equal in their maturity - if you compare Django to Rails to Laravel to ASP.NET to Play.
+So this is a choice of a language more than a choice of a framework - the framework should be 
+"a single most popular for your language".
+
+Python is a winner in terms of language maturity and size of its community.
+It leads in all other applications - it has ML libraries, it has the support for any kind of data processing you may need to do.
+
+So the real question is, do you want to have two languages (JS + Python) in your project, or you'd rather just have one
+and stick to Node.js?
+
+You can assmeble a stack around Express.js. It's essential to use the RDBMS way for the main data storage (i.e. not to slip into the NoSQL trap), which leads to using sequelize as an ORM. And sequelize itself isn't as smooth as Django ORM - it requires more manual actions and verbose configuration. It was also hard to interact with using REPL due to async nature - maybe it's still hard.
+
+I love Django admin panel, Django ORM, migrations, shell, dbshell, Jupyter notebooks with Django support.
+It's very hard to assemble such a stack on Node.js.
+Also, sequelize sucks, and NoSQL as a main data storage sucks way more. So - Django.
+
+(Alternatives - async Flask equivalent is FastAPI. Why do you need an async framework though?)
 
 Django boilerplate - cookiecutter?
 - https://github.com/pydanny/cookiecutter-django
 - https://github.com/agconti/cookiecutter-django-rest
 - https://github.com/wsvincent/awesome-django#boilerplate
 
-What to look at:
+Cool libraries:
 - https://django-extensions.readthedocs.io/
 - https://github.com/jazzband/django-debug-toolbar/
 - https://github.com/arteria/django-hijack
@@ -149,8 +226,7 @@ Open-source Django projects:
 - https://github.com/edx/edx-platform
 - https://github.com/django/djangoproject.com
 
-Alternatively, you can assmeble a stack around Express.js. Although I recommend go the RDBMS way, which leads to using sequelize as an ORM. And sequelize itself isn't as smooth as Django ORM - it requires more manual actions and verbose configuration. It was also hard to interact with using REPL due to async nature - maybe it's still hard.
-
+Blog posts:
 - https://vsupalov.com/django/
 - https://vsupalov.com/quick-django-refresher-crash-course/
 - https://vsupalov.com/django-custom-user-model/
@@ -202,63 +278,34 @@ Google One-Tap (Google YOLO) is a great experience, but it's still not public.
 
 
 
-
-Language infrastructure
-===
-
-Language flavor/safety [TypeScript, Mypy]
+Language flavor/safety [Mypy]
 ---
-Flow or Typescript? Should we use typed Python?
 
+Should we use typed Python?
 https://blogs.dropbox.com/tech/2019/09/our-journey-to-type-checking-4-million-lines-of-python/
 
 Mypy is worth a try - the code should be clearer. Once I start doing Mypy - follow this guide: https://realpython.com/python-type-checking/
 
 Django-stubs is Django with types: https://sobolevn.me/2019/08/typechecking-django-and-drf
 
-Looks like Flow is on par with TypeScript and it's better with React - both are maintained by Facebook. One may also migrate from Flow to TypeScript later on: https://medium.com/inato/migrating-from-flow-to-typescript-why-how-worth-it-5b7703d12089
-
-Flow is often blamed to have bad VSCode support and random bugs. Yarn and Jest migrated from Flow to TypeScript. Same for React Native's Expo.
-
-No need to use TSLint anymore: https://medium.com/palantir/tslint-in-2019-1a144c2317a9
-
-Looks like CRA doesn't have ES2016 support, let alone ES2020. What exactly are we missing: https://github.com/tc39/proposals/blob/master/finished-proposals.md It might make sense to enable it using customize-cra: https://2muchcoffee.com/blog/es7-decorators-how-to-use-the-decorator-syntax-in-react/
-
 Looks like Pyright (Microsoft) and Pyre (Facebook) are both maintained tools that do Mypy-like type checking, but faster.
 
-Have a look at:
-- Tons of learning resources: https://github.com/dzharii/awesome-typescript
-- https://github.com/typescript-cheatsheets/react-typescript-cheatsheet
-- https://github.com/jeffijoe/typesync
 
 
-
-Package managers [Yarn 1.22 or npm, npx, Pipenv]
+Package managers [Pipenv]
 ---
-Yarn 2 can fail to work with react-app-rewired, so sticking to a Yarn 1.* like 1.22 is a safe option for now.s
 
 Pipenv is a modern replacement for pip/virtualenv, although it itself isn't being actively supported since Oct 2018.
 Poetry isn't as mature as pipenv - eg. [pipenv is working in VSCode with zero configuration](https://code.visualstudio.com/docs/python/environments)
 
-It looks like npm is being actively developed and is on par with Yarn these days, whereas Yarn has almost no big changes throughout 2019.
-
 - https://gioele.io/pyenv-pipenv
 - https://xkcd.com/1987/
-- https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
 
 
 
-Linters and formatters [Prettier, Black, flake8, isort, Husky, ShellCheck for .sh, hadolint for Dockerfile]
+Linters and formatters [Black, flake8, isort]
 ---
 
-ESLint/Prettier with typescript-eslint. Also Black. Pre-commit hooks running necessary tools with Husky.
-
-JS stuff:
-- https://prettier.io/docs/en/integrating-with-linters.html
-- https://github.com/alexgorbatchev/eslint-import-resolver-typescript
-- https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
-
-Python stuff:
 - https://github.com/vintasoftware/python-linters-and-code-analysis (also watch out for Django-specific linters)
 - https://github.com/DmytroLitvinov/awesome-flake8-extensions
 - https://github.com/vinta/awesome-python#code-analysis
@@ -267,10 +314,6 @@ Python stuff:
 - https://github.com/psf/black/issues/333#issuecomment-516088368
 - https://dmerej.info/blog/post/bye-bye-pylint/
 - https://github.com/pilat/vscode-importmagic
-
-Other stuff:
-- https://github.com/koalaman/shellcheck
-- https://github.com/hadolint/hadolint
 
 What's suspicious about https://github.com/wemake-services/wemake-django-template ?
 - poetry instead of pipenv
@@ -282,7 +325,7 @@ A sample project with Black, flake8, mypy and isort are configured to work toget
 
 
 
-Deployment
+DevOps
 ===
 
 Frontend deployment [Zeit Now]
@@ -346,9 +389,20 @@ Monitoring: Sentry, Datadog?
 
 
 
-Mobile development [React Native]
+Linters and formatters [ShellCheck for .sh, hadolint for Dockerfile]
 ---
 
-React Native, Code Push, Fastlane.
+- https://github.com/koalaman/shellcheck
+- https://github.com/hadolint/hadolint
 
-Flutter is good but you already have React, so why make your stack more complex.
+
+
+Bonus track: Zsh tools
+---
+
+- https://github.com/ohmyzsh/ohmyzsh
+- https://denysdovhan.com/spaceship-prompt/
+- https://github.com/sharkdp/bat
+- https://github.com/ogham/exa
+- https://sobolevn.me/2017/10/using-better-clis
+- https://sobolevn.me/2017/08/instant-command-line-productivity
