@@ -121,17 +121,30 @@ It looks like npm is being actively developed and is on par with Yarn these days
 
 API design [Django REST Framework]
 ---
-REST? GraphQL?
 
-Looks like it's easy to plug in graphene_django at any time. Benefits: typed API requests, no overfetching/underfetching. Worth a try once we get to writing actual API queries.
+Should we use REST or GraphQL?
 
-What about DRF instead? DRF has 30 times more projects using it.
+Django has a very mature REST framework - Django REST framework (DRF), used by 108k projects according to Github stats.
+It's been actively maintained since 2011 and very well documented.
 
-To read: https://github.com/Shopify/graphql-design-tutorial/blob/master/TUTORIAL.md
-https://www.howtographql.com/
+GraphQL is a new technology that gives the following benefits:
+- typed API requests: auto checking, no need to do Swagger/Postman knowledge sharing between frontend and backend teams
+- no overfetching/underfetching
 
-GraphQL seems to be cool, Graphene probably sucks: https://news.ycombinator.com/item?id=20200203
+While the technology itself is cool, it's way more supported in the Node.js world, where the express-graphql library
+has same 109k users. It's support in the Django world is young and limited: graphene_django has 3k users, it's poorly documented, not very actively maintained and has performance issues.
 
+So for now, Django should be used with DRF. If GraphQL is a must, one should entirely switch to the Node.js stack.
+
+On GraphQL:
+- https://github.com/Shopify/graphql-design-tutorial/blob/master/TUTORIAL.md
+- https://www.howtographql.com/
+
+On current GraphQL support for Django:
+- https://news.ycombinator.com/item?id=20200203
+- https://yeti.co/blog/migrating-from-rest-to-graphql-in-django/
+
+On DRF: 
 - https://www.valentinog.com/blog/drf/
 - https://github.com/wsvincent/awesome-django#django-rest-framework
 
@@ -155,7 +168,7 @@ Can do plain django.contrib.auth with native pages (i.e. no React wrappers aroun
 
 Django_allauth and django-rest-auth. The latter isn't supported anymore, but it's required to wire with DRF. Also it's maybe not that painful because it's a tiny layer. No critial Issues found at their bug tracker.
 
-Google One-Tap (Google YOLO) is a great experience, but there's limited info on how to implement it now.
+Google One-Tap (Google YOLO) is a great experience, but it's still not public.
 
 
 
@@ -237,6 +250,11 @@ Frontend deployment [Zeit Now]
 Netlify? Now? Github Pages?
 
 Try Zeit Now and Netlify, in this order.
+
+Github Pages might be a weaker option because it's not a core business for the company => less convenient.
+
+On marrying frontend and backend:
+- https://fractalideas.com/blog/making-react-and-django-play-well-together/
 
 
 
