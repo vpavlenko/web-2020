@@ -17,7 +17,7 @@ I personally use VSCode editor, again because it's very popular these days which
 - [Backend](#backend)
   - [Backend framework [Django]](#backend-framework-django)
   - [API design [Django REST Framework]](#api-design-django-rest-framework)
-  - [Authentication [django-allauth, django-rest-auth]](#authentication-django-allauth-django-rest-auth)
+  - [Authentication [?]](#authentication-)
   - [Language flavor/safety [Mypy]](#language-flavorsafety-mypy)
   - [Package managers [Pipenv]](#package-managers-pipenv)
   - [Linters and formatters [Black, flake8, isort]](#linters-and-formatters-black-flake8-isort)
@@ -264,15 +264,33 @@ On DRF:
 - https://github.com/wsvincent/awesome-django#django-rest-framework
 
 
-Authentication [django-allauth, django-rest-auth]
+Authentication [?]
 ---
-Cognito? Auth0? python-social-auth?
 
-Looks like Passport.js is huge and popular.
+Question 1. How to authenticate API requests once the user is logged in?
 
-Can do plain django.contrib.auth with native pages (i.e. no React wrappers around, just redirects) - for prototyping
+Options: sessions, JWT tokens, some other tokens.
+- https://www.django-rest-framework.org/api-guide/authentication/
+- https://developer.okta.com/blog/2017/08/17/why-jwts-suck-as-session-tokens
+- http://cryto.net/~joepie91/blog/2016/06/19/stop-using-jwt-for-sessions-part-2-why-your-solution-doesnt-work/
 
-Django_allauth and django-rest-auth. The latter isn't supported anymore, but it's required to wire with DRF. Also it's maybe not that painful because it's a tiny layer. No critial Issues found at their bug tracker.
+Question 2. How to implement social authentication and allow user to sign in / sign up using Google/Facebook?
+
+Implementing social authentication is still hard. You can either rely on third party
+services or just plug in some libraries. Third party services like Amazon Cognito or Auth0
+usually cost money because that's how they make money. The possible upside of using them is that they keep
+integrations up-to-date. Every year or so your oauth providers like Google or Facebook change their protocol
+or bump their API version, and your previous sign-in button can become deprecated and broken.
+(Happened to me several times.)
+
+If you use your own libraries, you don't pay but you sometimes need to do integration maintenance. Plus, 
+the existing libraries aren't really that popular or smooth.
+
+For Node.js worls, Looks like Passport.js is huge and popular.
+
+Can do plain django.contrib.auth with native pages (i.e. no React wrappers around, just redirects) - for prototyping.
+
+There is python-social-auth and Django_allauth and django-rest-auth. The latter isn't supported anymore, but it's required to wire with DRF. Also it's maybe not that painful because it's a tiny layer. No critial Issues found at their bug tracker.
 
 Google One-Tap (Google YOLO) is a great experience, but it's still not public.
 
@@ -317,7 +335,7 @@ Linters and formatters [Black, flake8, isort]
 
 What's suspicious about https://github.com/wemake-services/wemake-django-template ?
 - poetry instead of pipenv
-- same for Caddy vs. nginx - it's not worth risking with this layer of infrastructure
+- new Caddy instead of old proven nginx - it's not worth risking with this layer of infrastructure
 - Gitlab CI - not a default Github CI
 - wemake-python-styleguide is against black, and I love auto-formatters
 
@@ -330,7 +348,8 @@ DevOps
 
 Frontend deployment [Zeit Now]
 ---
-Netlify? Now? Github Pages?
+
+Netlify or Zeit Now or Github Pages?
 
 Try Zeit Now and Netlify, in this order.
 
@@ -404,5 +423,6 @@ Bonus track: Zsh tools
 - https://denysdovhan.com/spaceship-prompt/
 - https://github.com/sharkdp/bat
 - https://github.com/ogham/exa
+- https://github.com/ggreer/the_silver_searcher
 - https://sobolevn.me/2017/10/using-better-clis
 - https://sobolevn.me/2017/08/instant-command-line-productivity
