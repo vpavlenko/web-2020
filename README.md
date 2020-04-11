@@ -137,6 +137,10 @@ Flutter is good but you already have React, so why make your stack more complex.
 
 Unless you build games or rely on bleeding edge APIs like VR/AR, you don't need native Swift/Kotlin development. It's more technologies => more engineering effort and cost, in terms of hours and team size and team salary and communication.
 
+Examples of large React Native projects:
+- https://github.com/zulip/zulip-mobile
+- https://github.com/mattermost/mattermost-mobile
+
 
 
 Language flavor/safety [TypeScript]
@@ -214,13 +218,15 @@ Django boilerplate - cookiecutter?
 
 Cool libraries:
 - https://django-extensions.readthedocs.io/
+  - https://django-extensions.readthedocs.io/en/latest/field_extensions.html
+  - https://django-extensions.readthedocs.io/en/latest/shell_plus.html to run Jupyter Notebook
 - https://github.com/jazzband/django-debug-toolbar/
 - https://github.com/arteria/django-hijack
 - https://github.com/wsvincent/awesome-django#models
 - https://github.com/joke2k/django-environ
 
 Open-source Django projects:
-- https://github.com/zulip/zulip/
+- https://github.com/zulip/zulip/ with very detailed documentation https://zulip.readthedocs.io/
 - https://github.com/taigaio/taiga-back
 - https://github.com/wagtail/wagtail/
 - https://github.com/edx/edx-platform
@@ -269,10 +275,15 @@ Authentication [?]
 
 Question 1. How to authenticate API requests once the user is logged in?
 
-Options: sessions, JWT tokens, some other tokens.
+Options: sessions/cookies, JWT tokens, some other tokens.
+
+Sessions may be hard to work with mobile clients.
+
+- https://fractalideas.com/blog/making-react-and-django-play-well-together/
 - https://www.django-rest-framework.org/api-guide/authentication/
 - https://developer.okta.com/blog/2017/08/17/why-jwts-suck-as-session-tokens
 - http://cryto.net/~joepie91/blog/2016/06/19/stop-using-jwt-for-sessions-part-2-why-your-solution-doesnt-work/
+- https://afdezl.github.io/post/authentication-react-native-django-1/
 
 Question 2. How to implement social authentication and allow user to sign in / sign up using Google/Facebook?
 
@@ -357,6 +368,7 @@ Github Pages might be a weaker option because it's not a core business for the c
 
 On marrying frontend and backend:
 - https://fractalideas.com/blog/making-react-and-django-play-well-together/
+- https://fractalideas.com/blog/making-react-and-django-play-well-together-single-page-app-model/
 
 
 
